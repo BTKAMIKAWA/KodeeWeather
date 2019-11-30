@@ -25,15 +25,17 @@ def address(request):
     }
     
     context = {'city_weather' : city_weather}  
+    address = request.POST['address']
     state = request.POST['state']
     zipcode = request.POST['zipcode']
 
+    request.session['address'] = address
     request.session['state'] = state
     request.session['zipcode'] = zipcode
 
     new_city = CityWeather.objects.create(city=city, state=state, zipcode=zipcode,temperature=temperature, description=description)
     
-    print(new_city.id)
+    print(new_city.city)
     return render(request, "home/address.html", context)
 
 def search_address(request):
