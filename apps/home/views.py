@@ -1,10 +1,14 @@
 import requests
 from apps.home.models import *
+from .models import CityWeather
 from django.shortcuts import render, redirect, HttpResponse
 
 
 def index(request):
     return render(request, "home/index.html")
+
+def search_address(request):
+    return redirect(request, "/search_address")
 
 def address(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=89953fd7459b665dc09abe3d6513a015'
@@ -25,6 +29,7 @@ def address(request):
     }
     
     context = {'city_weather' : city_weather}  
+
     address = request.POST['address']
     state = request.POST['state']
     zipcode = request.POST['zipcode']
@@ -38,5 +43,11 @@ def address(request):
     print(new_city.city)
     return render(request, "home/address.html", context)
 
-def search_address(request):
-    return redirect(request, "/search_address")
+def search_db(request):
+    return redirect(request, "/search_db")
+
+def searchdb(request):
+    context = {
+        "all_cities" : CityWeather.objects.all()
+    }
+    return render(request, "home/db.html", context)
