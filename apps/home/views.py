@@ -19,11 +19,19 @@ def address(request):
     response = requests.get(url.format(city)).json()    
     
     temperature = response['main']['temp']
+    low = response['main']['temp_min']
+    high = response['main']['temp_max']
+    humidity = response['main']['humidity']
+    wind = response['wind']['speed']
     description = response['weather'][0]['description']
 
     city_weather = {
         'city': city,
         'temperature': temperature,
+        'low' : low,
+        'high' : high,
+        'humidity' : humidity,
+        'wind' : wind,
         'description': description,
         'icon': response['weather'][0]['icon'],
     }

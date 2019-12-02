@@ -6,4 +6,4 @@ class CityWeather(models.Model):
     zipcode = models.CharField(max_length=5)
     temperature = models.CharField(max_length=5)
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)

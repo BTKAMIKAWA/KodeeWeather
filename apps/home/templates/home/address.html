@@ -14,17 +14,20 @@
     <nav class="navbar navbar-light header-db" style="background-color: #e3f2fd;">
         <a class="navbar-brand" style="color: black" href="/">MyWeather</a>
         <div style="padding-top:15px">
-            <a class="nav-item nav-link" style="color: black" href="/search_db">SearchDB</a>
+            <a class="nav-item nav-link" style="color: black" href="/search_db">View All</a>
         </div>
     </nav>
-
+    
     <section class="section" style="padding-bottom: 0">
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
                     <div style="text-align: center">
                         <span class="subtitle">{{ request.session.address }} <br> {{ city_weather.city }}, {{ request.session.state }} {{ request.session.zipcode }} </span><hr>
-                        <span class="title">Current weather</span>
+                        <span class="title">Current temperature</span><br> 
+                        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="img">
+                        <span class="subtitle">{{ city_weather.temperature }}° F</span>
+                        <span class="subtitle">- {{ city_weather.description }}</span>
                     </div>
                 </div>    
             </div>
@@ -38,15 +41,19 @@
                     <div class="box">
                         <article class="media">
                             <div class="media-left">
-                                <figure class="image is-100x100" style="margin-left: 35px; margin-right: 30px">
-                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="img">
+                                <figure class="image" style="margin-left: 35px; margin-right: 30px">
+                                   
+                                    
                                 </figure>
                             </div>
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="subtitle">{{ city_weather.temperature }}° F</span><br>
-                                        <span class="subtitle">{{ city_weather.description }}</span>
+                                        <span class="subtitle">Today's Low {{ city_weather.low }}° F</span><br>
+                                        <span class="subtitle">Today's High {{ city_weather.high }}° F</span><br>
+                                        <span class="subtitle">Humidity {{ city_weather.humidity }}%</span><br>
+                                        <span class="subtitle">Wind speed - {{ city_weather.wind }} mph</span><br>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -56,5 +63,6 @@
             </div>
         </div>
     </section>
+
 </body>
 </html>

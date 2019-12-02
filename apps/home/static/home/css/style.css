@@ -18,3 +18,9 @@
 .form-container {
     margin-left: 17%;
 }
+
+.date {
+    width: 500px;
+    margin: 0 auto;
+    padding: 0;
+}
