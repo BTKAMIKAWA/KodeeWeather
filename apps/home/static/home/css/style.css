@@ -1,0 +1,20 @@
+.header-db {
+    background-image: url("https://news.images.itv.com/image/file/1921475/stream_img.jpg") ;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+}
+
+.right-form {
+    display: inline-block;
+    margin-left: 75px;
+    vertical-align: top;
+}
+
+.left-form {
+    display: inline-block;
+    margin-right: 75px;
+}
+
+.form-container {
+    margin-left: 17%;
+}

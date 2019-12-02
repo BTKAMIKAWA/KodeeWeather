@@ -40,7 +40,7 @@ def address(request):
 
     new_city = CityWeather.objects.create(city=city, state=state, zipcode=zipcode,temperature=temperature, description=description)
     
-    print(new_city.city)
+    print(response)
     return render(request, "home/address.html", context)
 
 def search_db(request):
