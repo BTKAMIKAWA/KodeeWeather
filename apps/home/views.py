@@ -1,8 +1,12 @@
 import requests
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 from apps.home.models import *
 from .models import CityWeather
 from django.shortcuts import render, redirect, HttpResponse
-
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 def index(request):
     return render(request, "home/index.html")
@@ -10,6 +14,7 @@ def index(request):
 def search_address(request):
     return redirect(request, "/search_address")
 
+@cache_page(CACHE_TTL)
 def address(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=89953fd7459b665dc09abe3d6513a015'
     
@@ -59,3 +64,16 @@ def searchdb(request):
         "all_cities" : CityWeather.objects.all()
     }
     return render(request, "home/db.html", context)
+
+def filter_city(request):
+    return redirect(request, "filter_city")
+
+def city(request):
+    
+    city = request.POST['city'].title() 
+    context = {
+        "city" : CityWeather.objects.filter(city=city)
+    }
+    return render(request, "home/city.html", context)
+
+

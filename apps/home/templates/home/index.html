@@ -23,7 +23,7 @@
             </div><hr>
             
             <div class="search-form">
-                <form style="width: 400px; margin: 0 auto" action="/search_address" method="POST">
+                <form style="width: 800px; margin: 0 auto" action="/search_address" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="address">Street address</label>
@@ -40,23 +40,6 @@
                     <div class="form-group">
                         <label for="zipcode">Zipcode</label>
                         <input name="zipcode" type="text" class="form-control" placeholder="zipcode" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary button">Search</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="right-form">
-            <div style="text-align: center">
-                <h4 class="header">Look at recent weather searches by zipcode</h4>  
-            </div><hr>
-            
-            <div class="search-form">
-                <form style="width: 400px; margin: 0 auto" action="/search_zip" method="get">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="zipcode">Zipcode</label>
-                        <input type="text" class="form-control" placeholder="zipcode">
                     </div>
                     <button type="submit" class="btn btn-primary button">Search</button>
                 </form>

@@ -4,20 +4,7 @@
     background-size: cover;
 }
 
-.right-form {
-    display: inline-block;
-    margin-left: 75px;
-    vertical-align: top;
-}
 
-.left-form {
-    display: inline-block;
-    margin-right: 75px;
-}
-
-.form-container {
-    margin-left: 17%;
-}
 
 .date {
     width: 500px;
